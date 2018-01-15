@@ -106,6 +106,7 @@ open class GKImageCropViewController: UIViewController {
     private func _setupToolbar() {
         // if UIDevice.current.userInterfaceIdiom == .phone {
         self.toolbar = UIToolbar.init(frame: CGRect.zero)
+        
         if self.toolbar != nil {
             self.toolbar!.isTranslucent = true
             self.toolbar!.barStyle = .blackOpaque
@@ -159,7 +160,10 @@ open class GKImageCropViewController: UIViewController {
     override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.imageCropView?.frame = self.view.bounds;
-        self.toolbar?.frame = CGRect.init(x:0, y:0, width:320, height:54)
+        let height:CGFloat = 54.0
+        let y = self.view.frame.height - height
+        //set bottom of UIToolbar
+        self.toolbar?.frame = CGRect.init(x:0, y:y, width:self.view.frame.width, height:height)
     }
     
 }
